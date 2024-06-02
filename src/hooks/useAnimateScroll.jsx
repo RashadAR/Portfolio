@@ -4,7 +4,7 @@ const useAnimateScroll = (selector) => {
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                entry.target.classList.toggle('show', entry.isIntersecting);
+                entry.target.classList.add('show', entry.isIntersecting);
             });
         });
 
@@ -15,7 +15,7 @@ const useAnimateScroll = (selector) => {
         return () => {
             hiddenElements.forEach((el) => observer.unobserve(el));
         };
-    }, [selector]);
+    }, []);
 };
 
 export default useAnimateScroll;

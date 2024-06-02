@@ -21,7 +21,7 @@ export default function Skills() {
                     play={true}
                     direction="right"
                     gradientColor={'#140F23'}
-                    gradientWidth={200}
+                    gradientWidth={100}
                 >
                     {skillsData.map((skill, id) => (
                         <div

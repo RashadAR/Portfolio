@@ -1,7 +1,7 @@
 import { FaDownload } from 'react-icons/fa';
 
 const Resume = () => {
-    const resumeLink = 'src/assets/Rashad_Resume.pdf';
+    const resumeLink = '/Rashad_Resume.pdf';
 
     return (
         <div id="resume">

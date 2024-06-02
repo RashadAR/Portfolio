@@ -52,7 +52,7 @@ const Contact = () => {
     };
 
     return (
-        <div id="contact" className="px-4 lg:px-72 py-8 lg:py-16 text-white">
+        <div id="contact" className="px-4 lg:px-72 py-8 lg:py-16 text-white scroll-mt-24 hide">
             <Toaster />
             <div className="flex flex-col lg:flex-row justify-center items-center lg:space-x-8">
                 {/* Form Side */}
@@ -104,7 +104,7 @@ const Contact = () => {
                                 {error.required && <p className="text-sm text-red-400">Email and Message are required!</p>}
                                 <button
                                     type="submit"
-                                    className="flex items-center gap-1 hover:gap-3 rounded-full 
+                                    className="flex items-center gap-1 hover:gap-3 rounded-full mt-4
                                     bg-gradient-to-r from-pink-500 to-violet-600 px-5 md:px-12 py-2.5 md:py-3
                                      text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white
                                       no-underline transition-all duration-200 ease-out hover:text-white 
@@ -119,7 +119,7 @@ const Contact = () => {
                 </div>
 
                 {/* Resume and Socials Side */}
-                <div className="w-full lg:w-1/2 lg:px-32 flex flex-col items-center lg:items-start text-white">
+                <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-white">
                     <div className="max-w-md text-center lg:text-left">
                         <p className="text-lg text-[#d3d8e8] mt-8 mb-12">
                             If you have any questions or concerns, please don't hesitate to contact me.

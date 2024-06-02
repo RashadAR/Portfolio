@@ -19,7 +19,6 @@ const Hero = () => {
     return (
         <div id='hero' className="flex flex-col lg:flex-row justify-center items-center md:min-h-[400px] 
         min-h-0 px-4 lg:px-60 py-20 my-20 lg:py-20 hide">
-            {/* Description Side */}
             <div className="w-full lg:w-1/2 text-white text-3xl lg:text-5xl">
                 <p className="pb-10">Hey There!</p>
                 <div className="pt-4">
@@ -44,7 +43,6 @@ const Hero = () => {
                 </div>
             </div>
 
-            {/* SVG Side */}
             <div className="w-full lg:w-1/2 flex justify-center items-center mt-10 lg:mt-0">
                 <Lottie options={defaultOptions} height={400} width={400} />
             </div>

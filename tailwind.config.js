@@ -23,6 +23,13 @@ export default {
         700: '700ms',
         800: '800ms',
         900: '900ms',
+      },
+      textUnderlineOffset: {
+        3: '3px',
+        6: '6px',
+      },
+      textDecorationThickness: {
+        3: '3px',
       }
     },
   },

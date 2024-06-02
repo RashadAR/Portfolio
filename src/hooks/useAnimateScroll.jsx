@@ -2,9 +2,12 @@ import { useEffect } from 'react';
 
 const useAnimateScroll = (selector) => {
     useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                entry.target.classList.add('show', entry.isIntersecting);
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target);
+                }
             });
         });
 
@@ -15,7 +18,7 @@ const useAnimateScroll = (selector) => {
         return () => {
             hiddenElements.forEach((el) => observer.unobserve(el));
         };
-    }, []);
+    }, [selector]);
 };
 
 export default useAnimateScroll;

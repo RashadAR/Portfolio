@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
 import yelpCampImage from '/projectImages/YelpCamp.png';
+import comingSoon from '/projectImages/comingSoon.jpg'
 
 const projects = [
     {
@@ -14,17 +15,17 @@ const projects = [
     },
     {
         id: 2,
-        title: 'Project Two',
-        thumbnail: 'https://via.placeholder.com/400',
-        shortDescription: 'A short description of project two.',
-        fullDescription: 'A full description of project two with more details.',
-        repoLink: '#',
-        projectLink: '#'
+        title: 'Coming Soon...',
+        thumbnail: comingSoon,
+        shortDescription: 'Coming Soon....',
+        fullDescription: 'Coming Soon...',
+        repoLink: '',
+        projectLink: ''
     },
     {
         id: 3,
         title: 'Coming Soon...',
-        thumbnail: 'https://via.placeholder.com/400',
+        thumbnail: comingSoon,
         shortDescription: 'Coming Soon....',
         fullDescription: 'Coming Soon...',
         repoLink: '',

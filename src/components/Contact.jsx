@@ -121,7 +121,7 @@ const Contact = () => {
                 {/* Resume and Socials Side */}
                 <div className="w-full lg:w-1/2 lg:px-32 flex flex-col items-center lg:items-start text-white">
                     <div className="max-w-md text-center lg:text-left">
-                        <p className="text-sm text-[#d3d8e8] mt-8 mb-12">
+                        <p className="text-lg text-[#d3d8e8] mt-8 mb-12">
                             If you have any questions or concerns, please don't hesitate to contact me.
                             I am open to any work opportunities that align with my skills and interests.
                         </p>

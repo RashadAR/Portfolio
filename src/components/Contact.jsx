@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import useAnimateScroll from '../hooks/useAnimateScroll';
 import emailjs from '@emailjs/browser';
 import { TbMailForward } from 'react-icons/tb';
 import { toast, Toaster } from 'react-hot-toast';
@@ -10,6 +11,7 @@ const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [input, setInput] = useState({ name: '', email: '', message: '' });
     const [error, setError] = useState({ email: false, required: false });
+    useAnimateScroll('.hide');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -51,7 +53,7 @@ const Contact = () => {
     };
 
     return (
-        <div id="contact" className="px-4 lg:px-72 py-8 lg:py-16 text-white scroll-mt-24">
+        <div id="contact" className="px-4 lg:px-72 py-8 lg:py-16 text-white scroll-mt-24 hide">
             <Toaster />
             <div className="flex flex-col lg:flex-row justify-center items-center lg:space-x-8">
                 {/* Form Side */}

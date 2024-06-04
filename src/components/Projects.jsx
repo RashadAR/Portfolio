@@ -1,6 +1,7 @@
 import { FaGithub } from 'react-icons/fa';
 import yelpCampImage from '/projectImages/YelpCamp.png';
 import comingSoon from '/projectImages/comingSoon.jpg'
+import useAnimateScroll from '../hooks/useAnimateScroll';
 
 const projects = [
     {
@@ -33,8 +34,10 @@ const projects = [
 ];
 
 const Projects = () => {
+    useAnimateScroll('.hide');
+
     return (
-        <div id='projects' className='px-4 py-16 scroll-mt-24'>
+        <div id='projects' className='px-4 py-16 scroll-mt-24 hide'>
             <h2 className="text-4xl font-bold text-white text-center lg:mb-0 mb-16">
                 Projects
             </h2>

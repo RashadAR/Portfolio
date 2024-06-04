@@ -1,8 +1,10 @@
+import useAnimateScroll from '../hooks/useAnimateScroll';
 import { Typewriter } from 'react-simple-typewriter';
 import Lottie from 'react-lottie';
 import animationData from '/public/aniamtedSvg/Animation.json';
 import Socials from './Socials';
 const Hero = () => {
+    useAnimateScroll('.hide');
 
     const defaultOptions = {
         loop: true,
@@ -15,7 +17,7 @@ const Hero = () => {
 
     return (
         <div id='hero' className="flex flex-col lg:flex-row justify-center items-center md:min-h-[400px] 
-        min-h-0 px-4 lg:px-60 py-20 my-20 lg:py-20 ">
+        min-h-0 px-4 lg:px-60 py-20 my-20 lg:py-20 hide">
             <div className="w-full lg:w-1/2 text-white text-3xl lg:text-5xl">
                 <p className="pb-10">Hey There!</p>
                 <div className="pt-4">

@@ -1,5 +1,5 @@
 import { FaGithub } from 'react-icons/fa';
-import yelpCampImage from '/projectImages/YelpCamp.png';
+import yelpCampImage from '/projectImages/YelpCamp-min.png';
 import comingSoon from '/projectImages/comingSoon.jpg'
 import useAnimateScroll from '../hooks/useAnimateScroll';
 

@@ -8,7 +8,6 @@ import Resume from './Resume';
 
 const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-    const [status, setStatus] = useState('');
     const [input, setInput] = useState({ name: '', email: '', message: '' });
     const [error, setError] = useState({ email: false, required: false });
 
@@ -52,7 +51,7 @@ const Contact = () => {
     };
 
     return (
-        <div id="contact" className="px-4 lg:px-72 py-8 lg:py-16 text-white scroll-mt-24 hide">
+        <div id="contact" className="px-4 lg:px-72 py-8 lg:py-16 text-white scroll-mt-24">
             <Toaster />
             <div className="flex flex-col lg:flex-row justify-center items-center lg:space-x-8">
                 {/* Form Side */}

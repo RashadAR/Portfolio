@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaGithub } from 'react-icons/fa';
 import yelpCampImage from '/projectImages/YelpCamp.png';
 import comingSoon from '/projectImages/comingSoon.jpg'
@@ -35,7 +34,7 @@ const projects = [
 
 const Projects = () => {
     return (
-        <div id='projects' className='px-4 py-16 hide scroll-mt-24'>
+        <div id='projects' className='px-4 py-16 scroll-mt-24'>
             <h2 className="text-4xl font-bold text-white text-center lg:mb-0 mb-16">
                 Projects
             </h2>

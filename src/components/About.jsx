@@ -1,9 +1,7 @@
-import useAnimateScroll from '../hooks/useAnimateScroll';
 import Lottie from 'react-lottie';
 import animationData from '../../public/aniamtedSvg/ComputerAnimation.json';
 
 export default function About() {
-    useAnimateScroll('.hide');
 
     const defaultOptions = {
         loop: true,
@@ -15,7 +13,7 @@ export default function About() {
     };
 
     return (
-        <div className='hide scroll-mt-24' id='about'>
+        <div className='scroll-mt-24' id='about'>
             <h2 className="text-4xl font-bold text-white text-center lg:mb-0 mb-16
              mx-auto ">
                 About Me

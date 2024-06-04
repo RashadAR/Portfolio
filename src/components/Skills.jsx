@@ -1,14 +1,12 @@
 import { skillsData } from "../utils/data/skills";
 import { skillsImage } from "../utils/skill-image";
 import Marquee from "react-fast-marquee";
-import useAnimateScroll from '../hooks/useAnimateScroll';
 
 export default function Skills() {
-    useAnimateScroll('.hide');
 
     return (
         <div id="skills" className="relative z-40 my-4 lg:my-0 lg:pb-0 pb-32 scroll-mt-24">
-            <div className="flex justify-center my-5 lg:py-8 hide">
+            <div className="flex justify-center my-5 lg:py-8">
                 <span className="w-fit text-white font-bold p-2 px-5 text-4xl rounded-md">Skills</span>
             </div>
 

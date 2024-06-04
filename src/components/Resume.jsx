@@ -4,8 +4,8 @@ const Resume = () => {
     const resumeLink = '/Rashad_Resume.pdf';
 
     return (
-        <div id="resume">
-            <a
+        <>
+            <a id="resume"
                 href={resumeLink}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -17,7 +17,7 @@ const Resume = () => {
                 <FaDownload className="mr-2" />
                 View Resume
             </a>
-        </div>
+        </>
     );
 };
 

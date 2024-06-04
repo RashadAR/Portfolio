@@ -1,6 +1,6 @@
 import useAnimateScroll from '../hooks/useAnimateScroll';
 import Lottie from 'react-lottie';
-import animationData from '../../public/aniamtedSvg/ComputerAnimation.json';
+import animationData from '../aniamtedSvg/ComputerAnimation.json';
 
 export default function About() {
     useAnimateScroll('.hide');

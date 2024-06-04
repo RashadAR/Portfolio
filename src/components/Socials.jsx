@@ -8,34 +8,32 @@ const socials = [
 
 const Socials = () => {
     return (
-        <div id="socials" className="py-8">
-            <div className="flex  space-x-4">
-                {socials.map((social) => {
-                    const IconComponent = social.icon;
-                    return (
-                        <a
-                            key={social.id}
-                            href={social.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800
+        <div id="socials" className="flex py-8 space-x-4">
+            {socials.map((social) => {
+                const IconComponent = social.icon;
+                return (
+                    <a
+                        key={social.id}
+                        href={social.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800
                              transition-all duration-300"
-                        >
-                            <IconComponent
-                                className="w-6 h-6 text-gray-400 transition-colors duration-300"
-                                style={{
-                                    '--hover-color': social.hoverColor,
-                                }}
-                            />
-                            <style jsx>{`
+                    >
+                        <IconComponent
+                            className="w-6 h-6 text-gray-400 transition-colors duration-300"
+                            style={{
+                                '--hover-color': social.hoverColor,
+                            }}
+                        />
+                        <style jsx>{`
                                 a:hover .w-6 {
                                     color: var(--hover-color);
                                 }
                             `}</style>
-                        </a>
-                    );
-                })}
-            </div>
+                    </a>
+                );
+            })}
         </div>
     );
 };

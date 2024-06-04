@@ -6,11 +6,6 @@
 body {
     background: linear-gradient(to left, rgb(27 20 41), rgb(20 15 35));
     color: white;
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-style: normal;
 }
 
 

@@ -1,7 +1,7 @@
 import useAnimateScroll from '../hooks/useAnimateScroll';
 import { Typewriter } from 'react-simple-typewriter';
 import Lottie from 'react-lottie';
-import animationData from '/public/aniamtedSvg/Animation.json';
+import animationData from '../aniamtedSvg/Animation.json';
 import Socials from './Socials';
 const Hero = () => {
     useAnimateScroll('.hide');

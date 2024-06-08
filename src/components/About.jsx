@@ -1,18 +1,10 @@
 import useAnimateScroll from '../hooks/useAnimateScroll';
-import Lottie from 'react-lottie';
+import Lottie from 'react-lottie-player';
 import animationData from '../aniamtedSvg/ComputerAnimation.json';
 
 export default function About() {
     useAnimateScroll('.hide');
 
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: animationData,
-        rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice',
-        },
-    };
 
     return (
 
@@ -27,7 +19,12 @@ export default function About() {
 
                 {/* SVG Illustration Side */}
                 <div className="w-full lg:w-1/2 flex justify-center items-center order-2 lg:order-1">
-                    <Lottie options={defaultOptions} height={600} width={600} />
+                    <Lottie
+                        loop
+                        animationData={animationData}
+                        play
+                        style={{ width: 600, height: 600 }}
+                    />
                 </div>
 
                 {/* Description Side */}

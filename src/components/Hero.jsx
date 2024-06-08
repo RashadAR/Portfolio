@@ -1,19 +1,10 @@
 import useAnimateScroll from '../hooks/useAnimateScroll';
 import { Typewriter } from 'react-simple-typewriter';
-import Lottie from 'react-lottie';
+import Lottie from 'react-lottie-player';
 import animationData from '../aniamtedSvg/Animation.json';
 import Socials from './Socials';
 const Hero = () => {
     useAnimateScroll('.hide');
-
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: animationData,
-        rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice',
-        },
-    };
 
     return (
         <div id='hero' className="flex flex-col lg:flex-row justify-center items-center md:min-h-[400px] 
@@ -43,7 +34,12 @@ const Hero = () => {
             </div>
 
             <div className="w-full lg:w-1/2 flex justify-center items-center mt-10 lg:mt-0">
-                <Lottie options={defaultOptions} height={400} width={400} />
+                <Lottie
+                    loop
+                    animationData={animationData}
+                    play
+                    style={{ width: 400, height: 400 }}
+                />
             </div>
         </div>
     );

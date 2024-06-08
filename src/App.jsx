@@ -1,12 +1,12 @@
 import { lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import About from "./components/About";
+import Contact from "./components/Contact";
 import { RingLoader } from 'react-spinners';
 
-const About = lazy(() => import("./components/About"));
 const Skills = lazy(() => import("./components/Skills"));
 const Projects = lazy(() => import("./components/Projects"));
-const Contact = lazy(() => import("./components/Contact"));
 
 function App() {
   return (

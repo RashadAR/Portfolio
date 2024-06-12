@@ -5,7 +5,6 @@ import animationData from '../aniamtedSvg/ComputerAnimation.json';
 export default function About() {
     useAnimateScroll('.hide');
 
-
     return (
 
         <div className='hide scroll-mt-24' id='about'>

@@ -31,44 +31,85 @@ import vitejs from '/svg/skills/vitejs.svg';
 // import vue from '/svg/skills/vue.svg';
 import nodeJS from '/svg/skills/nodeJS.svg';
 
+const skillImages = {
+    'gcp': gcp,
+    'html': html,
+    'photoshop': photoshop,
+    'docker': docker,
+    'illustrator': illustrator,
+    'adobe xd': adobeXd,
+    'after effects': afterEffects,
+    'css': css,
+    'angular': angular,
+    'javascript': javascript,
+    'next js': nextJS,
+    'nuxt js': nuxtJS,
+    'node js': nodeJS,
+    'react': react,
+    'svelte': svelte,
+    'typescript': typescript,
+    'vue': vue,
+    'bootstrap': bootstrap,
+    'bulma': bulma,
+    'capacitorjs': capacitorjs,
+    'coffeescript': coffeescript,
+    'memsql': memsql,
+    'mongodb': mongoDB,
+    'mysql': mysql,
+    'postgresql': postgresql,
+    'tailwind': tailwind,
+    'vitejs': vitejs,
+    'vuetifyjs': vuetifyjs,
+    'c': c,
+    'c++': cplusplus,
+    'c#': csharp,
+    'dart': dart,
+    'go': go,
+    'java': java,
+    'kotlin': kotlin,
+    'julia': julia,
+    'matlab': matlab,
+    'php': php,
+    'python': python,
+    'ruby': ruby,
+    'swift': swift,
+    'adobe audition': adobeaudition,
+    'aws': aws,
+    'deno': deno,
+    'django': django,
+    'firebase': firebase,
+    'gimp': gimp,
+    'git': git,
+    'graphql': graphql,
+    'lightroom': lightroom,
+    'materialui': materialui,
+    'nginx': nginx,
+    'numpy': numpy,
+    'opencv': opencv,
+    'premiere pro': premierepro,
+    'pytorch': pytorch,
+    'selenium': selenium,
+    'strapi': strapi,
+    'tensorflow': tensorflow,
+    'webix': webix,
+    'wordpress': wordpress,
+    'azure': azure,
+    'blender': blender,
+    'fastify': fastify,
+    'figma': figma,
+    'flutter': flutter,
+    'haxe': haxe,
+    'ionic': ionic,
+    'markdown': markdown,
+    'microsoft office': microsoftoffice,
+    'picsart': picsart,
+    'sketch': sketch,
+    'unity': unity,
+    'wolframalpha': wolframalpha,
+    'canva': canva
+};
+
 export const skillsImage = (skill) => {
     const skillID = skill.toLowerCase();
-    switch (skillID) {
-        case 'html':
-            return html;
-        case 'css':
-            return css;
-        case 'javascript':
-            return javascript;
-        case 'node js':
-            return nodeJS;
-        case 'react':
-            return react;
-        case 'bootstrap':
-            return bootstrap;
-        case 'bulma':
-            return bulma;
-        case 'mongodb':
-            return mongoDB;
-        case 'mysql':
-            return mysql;
-        case 'tailwind':
-            return tailwind;
-        case 'vitejs':
-            return vitejs;
-        case 'c':
-            return c;
-        case 'java':
-            return java;
-        case 'python':
-            return python;
-        case 'django':
-            return django;
-        case 'git':
-            return git;
-        case 'materialui':
-            return materialui;
-        default:
-            break;
-    }
-}
+    return skillImages[skillID];
+};

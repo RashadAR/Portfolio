@@ -49,9 +49,9 @@ const Hero = memo(() => {
                         <Socials />
                     </div>
                 </AnimateInView>
-                <AnimateInView className="w-full lg:w-1/2 flex justify-center items-center mt-10 lg:mt-0" ref={ref}>
+                <div className="w-full lg:w-1/2 flex justify-center items-center mt-10 lg:mt-0" ref={ref}>
                     {inView && lottiePlayer}
-                </AnimateInView>
+                </div>
             </div>
         </div>
     );

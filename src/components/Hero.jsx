@@ -1,11 +1,17 @@
 import { memo, useMemo } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
+import { useInView } from 'react-intersection-observer';
 import Lottie from 'react-lottie-player';
 import animationData from '../aniamtedSvg/Animation.json';
 import Socials from './Socials';
 import { AnimateInView } from './AnimateInView';
 
 const Hero = memo(() => {
+    const { ref, inView } = useInView({
+        triggerOnce: true,
+        threshold: 0.1
+    });
+
     const typewriterWords = useMemo(() => [
         'MERN Stack Developer.',
         'Software Developer.',
@@ -17,10 +23,10 @@ const Hero = memo(() => {
         <Lottie
             loop
             animationData={animationData}
-            play
+            play={inView}
             style={{ width: 400, height: 400 }}
         />
-    ), []);
+    ), [inView]);
 
     return (
         <div id='hero' className="container mx-auto px-4 lg:px-12 py-20 my-20 lg:py-20">
@@ -39,12 +45,12 @@ const Hero = memo(() => {
                             />
                         </div>
                     </div>
-                    <div className="lg:pt-0 mt-12">
+                    <div className="lg:pt-0">
                         <Socials />
                     </div>
                 </AnimateInView>
-                <AnimateInView className="w-full lg:w-1/2 flex justify-center items-center mt-10 lg:mt-0">
-                    {lottiePlayer}
+                <AnimateInView className="w-full lg:w-1/2 flex justify-center items-center mt-10 lg:mt-0" ref={ref}>
+                    {inView && lottiePlayer}
                 </AnimateInView>
             </div>
         </div>

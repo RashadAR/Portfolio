@@ -1,18 +1,23 @@
 import { memo, useMemo } from 'react';
+import { useInView } from 'react-intersection-observer';
 import Lottie from 'react-lottie-player';
 import animationData from '../aniamtedSvg/ComputerAnimation.json';
 import { AnimateInView } from './AnimateInView';
 
 const About = memo(() => {
+    const { ref, inView } = useInView({
+        triggerOnce: true,
+        threshold: 0.1
+    });
 
     const lottiePlayer = useMemo(() => (
         <Lottie
             loop
             animationData={animationData}
-            play
+            play={inView}
             style={{ width: 600, height: 600 }}
         />
-    ), []);
+    ), [inView]);
 
     const descriptionParagraphs = useMemo(() => [
         "Ever since I started coding, I've been hooked! 🖥️",
@@ -29,9 +34,9 @@ const About = memo(() => {
                 </h2>
             </AnimateInView>
             <AnimateInView>
-                <div className="flex flex-col lg:flex-row justify-center items-center md:min-h-[400px] min-h-0 px-12">
+                <div className="flex flex-col lg:flex-row justify-center items-center md:min-h-[400px] min-h-0 px-12" ref={ref}>
                     <div className="w-full lg:w-1/2 flex justify-center items-center order-2 lg:order-1">
-                        {lottiePlayer}
+                        {inView && lottiePlayer}
                     </div>
                     <div className="w-full lg:w-1/2 text-white text-xl lg:text-xl text-center lg:text-left order-1 lg:order-2">
                         {descriptionParagraphs.map((paragraph, index) => (

@@ -1,6 +1,8 @@
 import { memo, useMemo } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import yelpCampImage from '/projectImages/YelpCamp-min.png';
+import TodoAppImage from '/projectImages/TodoApp.jpeg'
+import JobTrackerImage from '/projectImages/JobTracker.jpeg'
 import comingSoon from '/projectImages/comingSoon.jpg';
 import { AnimateInView } from './AnimateInView';
 
@@ -16,21 +18,20 @@ const projects = [
     },
     {
         id: 2,
-        title: 'Coming Soon...',
-        thumbnail: comingSoon,
-        shortDescription: 'Coming Soon....',
-        fullDescription: 'Coming Soon...',
-        repoLink: '',
-        projectLink: ''
+        title: 'Todo App',
+        thumbnail: TodoAppImage,
+        shortDescription: 'A sleek app for managing and tracking your daily tasks effortlessly.',
+        fullDescription: 'Fancy Todo App is a modern task management tool designed to help users organize, prioritize, and track their daily tasks efficiently, all within an intuitive and responsive interface.',
+        repoLink: 'https://github.com/RashadAR/TodoApp',
+        projectLink: 'https://fancytodoapp.vercel.app/'
     },
     {
         id: 3,
-        title: 'Coming Soon...',
-        thumbnail: comingSoon,
-        shortDescription: 'Coming Soon....',
-        fullDescription: 'Coming Soon...',
-        repoLink: '',
-        projectLink: ''
+        title: 'Job Tracker App',
+        thumbnail: JobTrackerImage,
+        shortDescription: 'Track your job applications and get AI-powered insights.',
+        fullDescription: 'Easily track your job applications and stay organized. Get AI-powered insights to improve your chances, including resume tips, interview prep, and personalized recommendations.',
+        repoLink: 'https://github.com/RashadAR/Job-Tracker',
     }
 ];
 

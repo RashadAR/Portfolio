@@ -9,6 +9,9 @@ export default {
       colors: {
         darkBlue: '#023047',
         cream: '#dad7cd',
+        primaryBg: '#140F23',
+        accent: '#16f2b3',
+        surface: '#10172d',
       },
       fontFamily: {
         sans: ['Roboto', 'sans-serif'],

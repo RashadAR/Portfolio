@@ -55,21 +55,43 @@ export default function Navbar() {
     ), [renderLink]);
 
     return (
-        <nav className="backdrop-filter backdrop-blur-lg bg-opacity-30 sticky top-0 z-50 bg-white border-b border-gray-200">
+        <nav className="backdrop-filter backdrop-blur-lg bg-opacity-30 sticky top-0 z-50 bg-white border-b border-gray-200" role="navigation" aria-label="Main">
             <div className="max-w-5xl mx-auto px-4">
                 <div className="flex items-center justify-between h-16">
-                    <a href="#hero" className="text-3xl text-cream font-semibold">Rashad</a>
-                    {isMobile ? menuButton : (
-                        <div className="flex text-lg space-x-2 lg:space-x-4 text-cream">
-                            {navLinks}
+                    <a href="#hero" className="text-3xl text-cream font-semibold" aria-label="Go to top">Rashad</a>
+                    {isMobile ? (
+                        <div className="flex items-center">
+                            <button
+                                onClick={toggleMenu}
+                                className="text-cream focus:outline-none"
+                                aria-expanded={isMenuOpen}
+                                aria-controls="primary-menu"
+                                aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+                            >
+                                <div className={`w-6 h-5 flex flex-col justify-between transform transition-all duration-300 ${isMenuOpen ? 'rotate-45' : ''}`}>
+                                    <span className={`w-full h-0.5 bg-cream transform transition-all duration-300 ${isMenuOpen ? 'rotate-90 translate-y-2.5' : ''}`}></span>
+                                    <span className={`w-full h-0.5 bg-cream transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+                                    <span className={`w-full h-0.5 bg-cream transform transition-all duration-300 ${isMenuOpen ? '-rotate-180 -translate-y-2' : ''}`}></span>
+                                </div>
+                            </button>
                         </div>
+                    ) : (
+                        <ul className="flex text-lg space-x-2 lg:space-x-4 text-cream" id="primary-menu">
+                            <li>{navLinks.props.children[0]}</li>
+                            <li>{navLinks.props.children[1]}</li>
+                            <li>{navLinks.props.children[2]}</li>
+                            <li>{navLinks.props.children[3]}</li>
+                        </ul>
                     )}
                 </div>
                 {isMobile && (
-                    <div className={`${isMenuOpen ? 'max-h-48' : 'max-h-0'} overflow-hidden transition-all duration-300 ease-in-out`}>
-                        <div className="flex flex-col space-y-2 py-2">
-                            {navLinks}
-                        </div>
+                    <div className={`${isMenuOpen ? 'max-h-48' : 'max-h-0'} overflow-hidden transition-all duration-300 ease-in-out`} id="primary-menu">
+                        <ul className="flex flex-col space-y-2 py-2">
+                            <li>{navLinks.props.children[0]}</li>
+                            <li>{navLinks.props.children[1]}</li>
+                            <li>{navLinks.props.children[2]}</li>
+                            <li>{navLinks.props.children[3]}</li>
+                        </ul>
                     </div>
                 )}
             </div>

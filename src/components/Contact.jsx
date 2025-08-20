@@ -47,8 +47,9 @@ const TextArea = memo(({ name, placeholder, value, onChange, onBlur }) => (
 TextArea.displayName = 'TextArea';
 
 const Contact = () => {
-    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+    const [formData, setFormData] = useState({ name: '', email: '', message: '', company: '' }); // company is a honeypot
     const [error, setError] = useState({ email: '', required: '' });
+    const [isSending, setIsSending] = useState(false);
 
     const handleChange = useCallback((e) => {
         const { name, value } = e.target;
@@ -57,8 +58,10 @@ const Contact = () => {
 
     const handleSubmit = useCallback((e) => {
         e.preventDefault();
+        if (formData.company) return; // honeypot filled => likely bot
 
         if (formData.email && formData.message) {
+            setIsSending(true);
             emailjs.send(
                 import.meta.env.VITE_EMAILJS_SERVICE_ID,
                 import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
@@ -67,10 +70,11 @@ const Contact = () => {
             )
                 .then(() => {
                     toast.success('Message sent successfully!');
-                    setFormData({ name: '', email: '', message: '' });
+                    setFormData({ name: '', email: '', message: '', company: '' });
                 }, () => {
                     toast.error('Failed to send message, please try again.');
-                });
+                })
+                .finally(() => setIsSending(false));
         } else {
             setError(prev => ({ ...prev, required: 'Email and Message are required!' }));
         }
@@ -96,7 +100,7 @@ const Contact = () => {
             <AnimateInView>
                 <div className="flex flex-col lg:flex-row justify-center items-center lg:space-x-8">
                     <div className="w-full lg:w-1/2 max-w-md mx-auto mb-8 lg:mb-0">
-                        <form onSubmit={handleSubmit} className="text-white">
+                        <form onSubmit={handleSubmit} className="text-white" aria-describedby="form-helper" noValidate>
                             <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase">Contact with me</p>
                             <div className="flex flex-col gap-4">
                                 <InputField
@@ -114,6 +118,8 @@ const Contact = () => {
                                     onChange={handleChange}
                                     onBlur={() => { checkRequired(); checkEmail(); }}
                                     error={error.email}
+                                    aria-invalid={!!error.email}
+                                    aria-describedby={error.email ? 'email-error' : undefined}
                                 />
                                 <TextArea
                                     name="message"
@@ -122,13 +128,29 @@ const Contact = () => {
                                     onChange={handleChange}
                                     onBlur={checkRequired}
                                 />
+                                {/* Honeypot field (hidden from users) */}
+                                <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
+                                    <label>
+                                        Do not fill this field:
+                                        <input
+                                            name="company"
+                                            type="text"
+                                            value={formData.company}
+                                            onChange={handleChange}
+                                            tabIndex={-1}
+                                            autoComplete="off"
+                                        />
+                                    </label>
+                                </div>
                                 <div className="flex flex-col items-center gap-2">
-                                    {error.required && <p className="text-sm text-red-400">{error.required}</p>}
+                                    {error.required && <p className="text-sm text-red-400" id="form-helper">{error.required}</p>}
                                     <button
                                         type="submit"
-                                        className="flex items-center gap-1 hover:gap-3 rounded-full mt-4 bg-gradient-to-r from-pink-500 to-violet-600 px-5 md:px-12 py-2.5 md:py-3 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold"
+                                        disabled={isSending}
+                                        aria-busy={isSending}
+                                        className="flex items-center gap-1 hover:gap-3 rounded-full mt-4 bg-gradient-to-r from-pink-500 to-violet-600 disabled:opacity-60 disabled:cursor-not-allowed px-5 md:px-12 py-2.5 md:py-3 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold"
                                     >
-                                        <span>Send Message</span>
+                                        <span>{isSending ? 'Sending...' : 'Send Message'}</span>
                                         <TbMailForward size={18} />
                                     </button>
                                 </div>

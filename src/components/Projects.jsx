@@ -1,45 +1,12 @@
 import { memo, useMemo } from 'react';
 import { FaGithub } from 'react-icons/fa';
-import yelpCampImage from '/projectImages/YelpCamp-min.png';
-import TodoAppImage from '/projectImages/TodoApp.jpeg'
-import JobTrackerImage from '/projectImages/JobTracker.jpeg'
-import comingSoon from '/projectImages/comingSoon.jpg';
 import { AnimateInView } from './AnimateInView';
-
-const projects = [
-    {
-        id: 1,
-        title: 'YelpCamp',
-        thumbnail: yelpCampImage,
-        shortDescription: 'Discover campgrounds, leave reviews, and plan adventures.',
-        fullDescription: 'Find campgrounds, leave reviews, and plan trips. Add new locations to the database, enriching the platform for everyone. Built with Node.js, Express, and MongoDB for a powerful backend.',
-        repoLink: 'https://github.com/RashadAR/YelpCamp',
-        projectLink: 'https://yelpcamp-japz.onrender.com/'
-    },
-    {
-        id: 2,
-        title: 'Todo App',
-        thumbnail: TodoAppImage,
-        shortDescription: 'A sleek app for managing and tracking your daily tasks effortlessly.',
-        fullDescription: 'Fancy Todo App is a modern task management tool designed to help users organize, prioritize, and track their daily tasks efficiently, all within an intuitive and responsive interface.',
-        repoLink: 'https://github.com/RashadAR/TodoApp',
-        projectLink: 'https://fancytodoapp.vercel.app/'
-    },
-    {
-        id: 3,
-        title: 'Job Tracker App',
-        thumbnail: JobTrackerImage,
-        shortDescription: 'Track your job applications and get AI-powered insights.',
-        fullDescription: 'Easily track your job applications and stay organized. Get AI-powered insights to improve your chances, including resume tips, interview prep, and personalized recommendations.',
-        repoLink: 'https://github.com/RashadAR/Job-Tracker',
-    }
-];
+import { projectsData } from '../utils/data/projects';
 
 const ProjectCard = memo(({ project }) => (
     <div className="relative group w-full">
         <div
-            className="relative overflow-hidden rounded-xl shadow-lg cursor-pointer
-         transition-all duration-500 transform hover:scale-105"
+            className="relative overflow-hidden rounded-xl shadow-lg cursor-pointer transition-all duration-500 transform hover:scale-105"
             style={{ minHeight: '400px' }}
         >
             <img
@@ -51,19 +18,13 @@ const ProjectCard = memo(({ project }) => (
             <div
                 className="absolute inset-0 bg-cover bg-center hidden group-hover:block"
                 style={{ backgroundImage: `url(${project.thumbnail})` }}
-            ></div>
+            />
             <div
-                className="absolute inset-0 bg-opacity-75 opacity-0
-             group-hover:opacity-100 group-hover:backdrop-blur-md transition-opacity duration-300 flex items-center
-              justify-center"
+                className="absolute inset-0 bg-opacity-75 opacity-0 group-hover:opacity-100 group-hover:backdrop-blur-md transition-opacity duration-300 flex items-center justify-center"
             >
                 <div className="p-4 text-center">
-                    <h3 className="text-white text-xl font-bold mb-2">
-                        {project.title}
-                    </h3>
-                    <p className="text-white text-sm mb-4">
-                        {project.fullDescription}
-                    </p>
+                    <h3 className={`text-xl font-bold mb-2 ${project.textColor === 'black' ? 'text-black' : 'text-white'}`}>{project.title}</h3>
+                    <p className={`text-sm mb-4 ${project.textColor === 'black' ? 'text-gray-800' : 'text-white'}`}>{project.fullDescription}</p>
                     <div className="flex justify-center space-x-4">
                         {project.repoLink && (
                             <a
@@ -100,16 +61,17 @@ const ProjectCard = memo(({ project }) => (
 ProjectCard.displayName = 'ProjectCard';
 
 const Projects = memo(() => {
-    const projectCards = useMemo(() => projects.map(project => (
+    // Data is static, mapping each render is cheap; still memo for future dynamic expansion.
+    const projectCards = useMemo(() => projectsData.map(project => (
         <ProjectCard key={project.id} project={project} />
     )), []);
 
     return (
-        <div id='projects' className='px-4 py-16 scroll-mt-24'>
+    <section id='projects' className='px-4 py-16 scroll-mt-24' aria-labelledby="projects-heading">
             <AnimateInView>
-                <h2 className="text-4xl font-bold text-white text-center lg:mb-0 mb-16">
-                    Projects
-                </h2>
+        <h2 id="projects-heading" className="text-4xl font-bold text-white text-center lg:mb-0 mb-16">
+            Projects
+        </h2>
             </AnimateInView>
             <div className="flex flex-col items-center justify-center mt-40 lg:mt-20">
                 <AnimateInView>
@@ -118,7 +80,7 @@ const Projects = memo(() => {
                     </div>
                 </AnimateInView>
             </div>
-        </div>
+    </section>
     );
 });
 

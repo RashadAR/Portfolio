@@ -15,6 +15,8 @@ import react from '/svg/skills/react.svg';
 import tailwind from '/svg/skills/tailwind.svg';
 import vitejs from '/svg/skills/vitejs.svg';
 import nodeJS from '/svg/skills/nodeJS.svg';
+// Fallback placeholder (reuse react icon if nothing else provided)
+const fallback = react;
 
 const skillImages = new Map([
     ['html', html],
@@ -38,5 +40,13 @@ const skillImages = new Map([
 
 export const skillsImage = (skill) => {
     const skillID = skill.toLowerCase();
-    return skillImages.get(skillID);
+    const img = skillImages.get(skillID);
+    if (!img) {
+        if (import.meta.env.DEV) {
+            // eslint-disable-next-line no-console
+            console.warn(`[skillsImage] Missing icon for skill: ${skill}`);
+        }
+        return fallback;
+    }
+    return img;
 };

@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 import { useInView } from 'react-intersection-observer';
-import Lottie from 'react-lottie-player';
+import { LazyLottie } from './LazyLottie';
 import animationData from '../aniamtedSvg/ComputerAnimation.json';
 import { AnimateInView } from './AnimateInView';
 
@@ -11,7 +11,7 @@ const About = memo(() => {
     });
 
     const lottiePlayer = useMemo(() => (
-        <Lottie
+        <LazyLottie
             loop
             animationData={animationData}
             play={inView}
@@ -27,9 +27,9 @@ const About = memo(() => {
     ], []);
 
     return (
-        <div className='scroll-mt-24' id='about'>
+        <section className='scroll-mt-24' id='about' aria-labelledby="about-heading">
             <AnimateInView>
-                <h2 className="text-4xl font-bold text-white text-center lg:mb-0 mb-16 mx-auto">
+                <h2 id="about-heading" className="text-4xl font-bold text-white text-center lg:mb-0 mb-16 mx-auto">
                     About Me
                 </h2>
             </AnimateInView>
@@ -47,7 +47,7 @@ const About = memo(() => {
                     </div>
                 </div>
             </AnimateInView>
-        </div>
+        </section>
     );
 });
 

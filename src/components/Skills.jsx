@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 import { skillsData } from "../utils/data/skills";
 import { skillsImage } from "../utils/skill-image";
 import Marquee from "react-fast-marquee";
@@ -18,6 +18,15 @@ export default function Skills() {
         }));
     }, []);
 
+    const [allowMotion, setAllowMotion] = useState(true);
+    useEffect(() => {
+        const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+        setAllowMotion(!media.matches);
+        const listener = (e) => setAllowMotion(!e.matches);
+        media.addEventListener('change', listener);
+        return () => media.removeEventListener('change', listener);
+    }, []);
+
     return (
         <div id="skills" className="relative z-40 my-4 lg:my-0 lg:pb-0 pb-32 scroll-mt-24">
             <AnimateInView>
@@ -27,15 +36,15 @@ export default function Skills() {
             </AnimateInView>
 
             <div className="w-full my-12" ref={ref}>
-                {inView && (
+        {inView && (
                     <Marquee
-                        gradient={true}
-                        speed={100}
-                        pauseOnHover={true}
-                        delay={1}
-                        play={true}
+            gradient={true}
+            speed={allowMotion ? 100 : 0}
+            pauseOnHover={true}
+            delay={1}
+            play={allowMotion}
                         direction="right"
-                        gradientColor={'#140F23'}
+            gradientColor={'#140F23'}
                         gradientWidth={100}
                     >
                         {memoizedSkillsImages.map(({ skill, image }, id) => (
